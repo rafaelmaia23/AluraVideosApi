@@ -4,7 +4,7 @@
 
 namespace VideosApi.Migrations
 {
-    public partial class AddVideosToDatabase : Migration
+    public partial class AddingNewVideoModel : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

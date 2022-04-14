@@ -11,8 +11,8 @@ using VideosApi.Data;
 namespace VideosApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220413180318_AddVideosToDatabase")]
-    partial class AddVideosToDatabase
+    [Migration("20220414142811_AddingNewVideoModel")]
+    partial class AddingNewVideoModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using VideosApi.Data;
+using VideosApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(
     builder.Configuration.GetConnectionString("DefaultConnection")
     ));
+builder.Services.AddScoped<VideosService, VideosService>();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
