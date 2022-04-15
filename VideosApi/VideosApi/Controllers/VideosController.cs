@@ -16,10 +16,10 @@ namespace VideosApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddVideos([FromBody] Video video)
+        public IActionResult AddVideo([FromBody] Video video)
         {
             Video videoCreated = _videosService.AddVideo(video);
-            return CreatedAtAction(nameof(ReadVideosById), new { Id = videoCreated.Id }, videoCreated);
+            return CreatedAtAction(nameof(ReadVideoById), new { Id = videoCreated.Id }, videoCreated);
             
         }
 
@@ -32,12 +32,19 @@ namespace VideosApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult ReadVideosById(int id)
+        public IActionResult ReadVideoById(int id)
         {
-            Video video = _videosService.ReadVideosById(id);
+            Video video = _videosService.ReadVideoById(id);
             if(video == null) return NotFound();
             return Ok(video);
         }
 
+        [HttpPut("{id}")]
+        public IActionResult UpdateVideo(int id, [FromBody] Video video)
+        {
+            Video updatedVideo = _videosService.UpdateVideo(id, video);
+            if(updatedVideo == null) return NotFound(); 
+            return Ok(ReadVideoById(id));
+        }
     }
 }

@@ -12,6 +12,13 @@ namespace VideosApi.Services
             _db = db;
         }
 
+        public Video AddVideo(Video video)
+        {
+            _db.Videos.Add(video);
+            _db.SaveChanges();
+            return video;
+        }
+
         public List<Video> ReadVideos()
         {
             List<Video> videoList = _db.Videos.ToList();
@@ -19,18 +26,22 @@ namespace VideosApi.Services
             return videoList;
         }
 
-        internal Video ReadVideosById(int id)
+        public Video ReadVideoById(int id)
         {
             Video video = _db.Videos.FirstOrDefault(v => v.Id == id);
             if(video == null) return null;
             return video;
         }
 
-        internal Video AddVideo(Video video)
+        internal Video UpdateVideo(int id, Video video)
         {
-            _db.Videos.Add(video);
+            Video updatedVideo = _db.Videos.FirstOrDefault(v => v.Id == id);
+            if (video == null) return null;
+            updatedVideo.Title = video.Title;
+            updatedVideo.Description = video.Description;
+            updatedVideo.Url = video.Url;
             _db.SaveChanges();
-            return video;
+            return updatedVideo;
         }
     }
 }
