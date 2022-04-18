@@ -1,4 +1,7 @@
-﻿using VideosApi.Data;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using VideosApi.Data;
+using VideosApi.Data.Dtos;
 using VideosApi.Models;
 
 namespace VideosApi.Services
@@ -6,42 +9,53 @@ namespace VideosApi.Services
     public class VideosService
     {
         private readonly AppDbContext _db;
+        private readonly IMapper _mapper;
 
-        public VideosService(AppDbContext db)
+        public VideosService(AppDbContext db, IMapper mapper)
         {
             _db = db;
+            _mapper = mapper;
         }
 
-        public Video AddVideo(Video video)
+        public ReadVideoDto AddVideo(CreateVideoDto createVideoDto)
         {
+            Video video = _mapper.Map<Video>(createVideoDto);
             _db.Videos.Add(video);
             _db.SaveChanges();
-            return video;
+            return _mapper.Map<ReadVideoDto>(video);
         }
 
-        public List<Video> ReadVideos()
+        public List<ReadVideoDto> ReadVideos()
         {
             List<Video> videoList = _db.Videos.ToList();
             if(videoList == null) return null;
-            return videoList;
+            return _mapper.Map<List<ReadVideoDto>>(videoList);
         }
 
-        public Video ReadVideoById(int id)
+        public ReadVideoDto ReadVideoById(int id)
         {
             Video video = _db.Videos.FirstOrDefault(v => v.Id == id);
             if(video == null) return null;
-            return video;
+            return _mapper.Map<ReadVideoDto>(video);
         }
 
-        public Video UpdateVideo(int id, Video video)
+        public ReadVideoDto UpdateVideo(int id, PutVideoDto putVideoDto)
         {
-            Video updatedVideo = _db.Videos.FirstOrDefault(v => v.Id == id);
+            Video video = _db.Videos.FirstOrDefault(v => v.Id == id);
             if (video == null) return null;
-            updatedVideo.Title = video.Title;
-            updatedVideo.Description = video.Description;
-            updatedVideo.Url = video.Url;
+            _mapper.Map(putVideoDto, video);
             _db.SaveChanges();
-            return updatedVideo;
+            ReadVideoDto readVideoDto = _mapper.Map<ReadVideoDto>(_db.Videos.FirstOrDefault(v => v.Id == id));
+            return readVideoDto;
+        }
+
+        public int DeleteVideo(int id)
+        {
+            Video video = _db.Videos.FirstOrDefault(v => v.Id == id);
+            if (video == null) return 0;
+            _db.Videos.Remove(video);
+            _db.SaveChanges();
+            return 1;             
         }
     }
 }

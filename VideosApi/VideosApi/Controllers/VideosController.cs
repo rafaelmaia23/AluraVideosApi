@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using VideosApi.Data.Dtos;
 using VideosApi.Models;
 using VideosApi.Services;
 
@@ -16,35 +17,43 @@ namespace VideosApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddVideo([FromBody] Video video)
+        public IActionResult AddVideo([FromBody] CreateVideoDto createVideoDto)
         {
-            Video videoCreated = _videosService.AddVideo(video);
-            return CreatedAtAction(nameof(ReadVideoById), new { Id = videoCreated.Id }, videoCreated);
+            ReadVideoDto readVideoDto = _videosService.AddVideo(createVideoDto);
+            return CreatedAtAction(nameof(ReadVideoById), new { Id = readVideoDto.Id }, readVideoDto);
             
         }
 
         [HttpGet]
         public IActionResult ReadVideos()
         {
-            List<Video> videoList = _videosService.ReadVideos();
-            if (videoList == null) return NotFound();
-            return Ok(videoList);
+            List<ReadVideoDto> readVideoDtos = _videosService.ReadVideos();
+            if (readVideoDtos == null) return NotFound();
+            return Ok(readVideoDtos);
         }
 
         [HttpGet("{id}")]
         public IActionResult ReadVideoById(int id)
         {
-            Video video = _videosService.ReadVideoById(id);
-            if(video == null) return NotFound();
-            return Ok(video);
+            ReadVideoDto readVideoDto = _videosService.ReadVideoById(id);
+            if(readVideoDto == null) return NotFound();
+            return Ok(readVideoDto);
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateVideo(int id, [FromBody] Video video)
+        public IActionResult UpdateVideo(int id, [FromBody] PutVideoDto putVideoDto)
         {
-            Video updatedVideo = _videosService.UpdateVideo(id, video);
-            if(updatedVideo == null) return NotFound(); 
-            return Ok(ReadVideoById(id));
+            ReadVideoDto readVideoDto = _videosService.UpdateVideo(id, putVideoDto);
+            if(readVideoDto == null) return NotFound(); 
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteVideo(int id)
+        {
+            int result = _videosService.DeleteVideo(id);
+            if(result == 0) return NotFound();
+            return NoContent();
         }
 
 
