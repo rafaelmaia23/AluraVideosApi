@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "puxvgwWvtYapoRI8ht66xOstfro+loJVdc2voSoAAFhJldi98YWDKsxF500wL5S1N/RYYtIzzO5HA4MMgkjOsQ==",
+  "dgSpecHash": "uRjrvCo1f3a9rUKWCP+LFdnUmS4DHE4ThfyRKs3LcsGCPPaL1weyaqZxoX8QuQCtkv1Zzr3d6tNuwV5ykAEC5A==",
   "success": true,
   "projectFilePath": "D:\\Estudos\\Alura\\Alura Challenge\\Backend\\AluraVideosApi\\AluraVideosApi\\VideosApi\\VideosApi\\VideosApi.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\rafa_\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
+    "C:\\Users\\rafa_\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
     "C:\\Users\\rafa_\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
-    "C:\\Users\\rafa_\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\rafa_\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\rafa_\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\rafa_\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
     "C:\\Users\\rafa_\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.4\\microsoft.entityframeworkcore.6.0.4.nupkg.sha512",

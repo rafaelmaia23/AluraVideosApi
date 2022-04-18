@@ -14,6 +14,7 @@ builder.Services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(
     ));
 builder.Services.AddScoped<VideosService, VideosService>();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 

@@ -33,7 +33,7 @@ namespace VideosApi.Services
             return video;
         }
 
-        internal Video UpdateVideo(int id, Video video)
+        public Video UpdateVideo(int id, Video video)
         {
             Video updatedVideo = _db.Videos.FirstOrDefault(v => v.Id == id);
             if (video == null) return null;
