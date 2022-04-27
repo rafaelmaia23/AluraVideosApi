@@ -59,3 +59,9 @@ D:\Estudos\Alura\Alura Challenge\Backend\AluraVideosApi\AluraVideosApi\VideosApi
 D:\Estudos\Alura\Alura Challenge\Backend\AluraVideosApi\AluraVideosApi\VideosApi\VideosApi\obj\Debug\net6.0\VideosApi.pdb
 D:\Estudos\Alura\Alura Challenge\Backend\AluraVideosApi\AluraVideosApi\VideosApi\VideosApi\obj\Debug\net6.0\VideosApi.genruntimeconfig.cache
 D:\Estudos\Alura\Alura Challenge\Backend\AluraVideosApi\AluraVideosApi\VideosApi\VideosApi\obj\Debug\net6.0\ref\VideosApi.dll
+D:\Estudos\Alura\Alura Challenge\Backend\AluraVideosApi\AluraVideosApi\VideosApi\VideosApi\bin\Debug\net6.0\AutoMapper.dll
+D:\Estudos\Alura\Alura Challenge\Backend\AluraVideosApi\AluraVideosApi\VideosApi\VideosApi\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\Estudos\Alura\Alura Challenge\Backend\AluraVideosApi\AluraVideosApi\VideosApi\VideosApi\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\Estudos\Alura\Alura Challenge\Backend\AluraVideosApi\AluraVideosApi\VideosApi\VideosApi\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\Estudos\Alura\Alura Challenge\Backend\AluraVideosApi\AluraVideosApi\VideosApi\VideosApi\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\Estudos\Alura\Alura Challenge\Backend\AluraVideosApi\AluraVideosApi\VideosApi\VideosApi\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll

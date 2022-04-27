@@ -7,7 +7,7 @@ namespace VideosApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class VideosController : ControllerBase
+    public class VideosController : Controller
     {
         private readonly VideosService _videosService;
 
@@ -55,7 +55,5 @@ namespace VideosApi.Controllers
             if(result == 0) return NotFound();
             return NoContent();
         }
-
-
     }
 }
