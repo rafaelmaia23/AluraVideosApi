@@ -24,6 +24,37 @@ namespace VideosApi.Services
             return _mapper.Map<ReadCategoriaDto>(categoria);
         }
 
+        public List<ReadCategoriaDto> ReadCategorias()
+        {
+            List<Categoria>? categorias = _db.Categorias.ToList();
+            if (categorias == null) return null;
+            return _mapper.Map<List<ReadCategoriaDto>>(categorias);
+        }
 
+        public ReadCategoriaDto ReadCategoriaById(int id)
+        {
+            Categoria? categoria = _db.Categorias.FirstOrDefault(c => c.Id == id);
+            if (categoria == null) return null;
+            return _mapper.Map<ReadCategoriaDto>(categoria);
+        }
+
+        public ReadCategoriaDto UpdateCategoria(int id, PutCategoriaDto putCategoriaDto)
+        {
+            Categoria? categoria = _db.Categorias.FirstOrDefault(c => c.Id == id);
+            if(categoria == null) return null;
+            _mapper.Map(putCategoriaDto, categoria);
+            _db.SaveChanges();
+            ReadCategoriaDto readCategoriaDto = _mapper.Map<ReadCategoriaDto>(_db.Categorias.FirstOrDefault(c =>c.Id == id));
+            return readCategoriaDto; 
+        }
+
+        internal int Deletecategoria(int id)
+        {
+            Categoria? categoria = _db.Categorias.FirstOrDefault(c =>c.Id == id);
+            if(categoria == null) return 0;
+            _db.Categorias.Remove(categoria);
+            _db.SaveChanges();
+            return 1;
+        }
     }
 }

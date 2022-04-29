@@ -18,5 +18,7 @@ namespace VideosApi.Models
         [Required(ErrorMessage = "O campo Url é obrigatório")]
         [MinLength(5, ErrorMessage = "O campo Url precisa ter no minimo 5 digitos")]
         public string? Url { get; set; }
+        public virtual Categoria Categoria { get; set; }
+        public int CategoriaId { get; set; }
     }
 }

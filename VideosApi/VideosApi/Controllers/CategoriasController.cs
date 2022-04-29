@@ -22,11 +22,36 @@ namespace VideosApi.Controllers
             return CreatedAtAction(nameof(ReadCategoriaById), new { Id = readCategoriaDto.Id }, readCategoriaDto);
         }
 
-        public IActionResult ReadCategoriaById(int id)
+        [HttpGet]
+        public IActionResult ReadCategorias()
         {
-            return null;
+            List<ReadCategoriaDto> readCategoriaDtos = _categoriasService.ReadCategorias();
+            if (readCategoriaDtos == null) return NotFound();
+            return Ok(readCategoriaDtos);
         }
 
+        [HttpGet("{id}")]
+        public IActionResult ReadCategoriaById(int id)
+        {
+            ReadCategoriaDto readCategoriaDto = _categoriasService.ReadCategoriaById(id);
+            if(readCategoriaDto == null) return NotFound();
+            return Ok(readCategoriaDto);
+        }
 
+        [HttpPut("{id}")]
+        public IActionResult UpdateCategoria(int id, [FromBody]PutCategoriaDto putCategoriaDto)
+        {
+            ReadCategoriaDto readCategoriaDto = _categoriasService.UpdateCategoria(id, putCategoriaDto);
+            if (readCategoriaDto == null) return NotFound();
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteCategoria(int id)
+        {
+            int result = _categoriasService.Deletecategoria(id);
+            if(result == 0) return NotFound();
+            return NoContent();
+        }
     }
 }

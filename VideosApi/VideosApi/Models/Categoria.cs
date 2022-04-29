@@ -14,5 +14,6 @@ namespace VideosApi.Models
         [Required(ErrorMessage = "O campo Color é obrigatório")]
         [MaxLength(10, ErrorMessage = "O campo Title não pode exeder o máximo de 10 digitos")]
         public string? Color { get; set; }
+        public virtual List<Video> Videos { get; set; }
     }
 }

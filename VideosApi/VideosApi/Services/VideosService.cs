@@ -27,21 +27,21 @@ namespace VideosApi.Services
 
         public List<ReadVideoDto> ReadVideos()
         {
-            List<Video> videoList = _db.Videos.ToList();
+            List<Video>? videoList = _db.Videos.ToList();
             if(videoList == null) return null;
             return _mapper.Map<List<ReadVideoDto>>(videoList);
         }
 
         public ReadVideoDto ReadVideoById(int id)
         {
-            Video video = _db.Videos.FirstOrDefault(v => v.Id == id);
+            Video? video = _db.Videos.FirstOrDefault(v => v.Id == id);
             if(video == null) return null;
             return _mapper.Map<ReadVideoDto>(video);
         }
 
         public ReadVideoDto UpdateVideo(int id, PutVideoDto putVideoDto)
         {
-            Video video = _db.Videos.FirstOrDefault(v => v.Id == id);
+            Video? video = _db.Videos.FirstOrDefault(v => v.Id == id);
             if (video == null) return null;
             _mapper.Map(putVideoDto, video);
             _db.SaveChanges();
@@ -51,7 +51,7 @@ namespace VideosApi.Services
 
         public int DeleteVideo(int id)
         {
-            Video video = _db.Videos.FirstOrDefault(v => v.Id == id);
+            Video? video = _db.Videos.FirstOrDefault(v => v.Id == id);
             if (video == null) return 0;
             _db.Videos.Remove(video);
             _db.SaveChanges();
